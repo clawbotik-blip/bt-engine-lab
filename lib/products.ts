@@ -1,3 +1,12 @@
+export interface IncubatorModel {
+  type: string;
+  capacity_cuft: number | string;
+  sku_115v: string;
+  price_115v_usd: number;
+  sku_230v: string;
+  price_230v_usd: number;
+}
+
 export interface Product {
   id: string;
   slug: string;
@@ -13,6 +22,7 @@ export interface Product {
   imageUrl: string;
   featured: boolean;
   datasheetUrl?: string;
+  models?: IncubatorModel[];
 }
 
 export interface Category {
@@ -245,6 +255,148 @@ export const products: Product[] = [
     },
     imageUrl: "https://images.unsplash.com/photo-1576086213369-97a306d36557?w=800&q=80",
     featured: false,
+  },
+
+  // --- Incubators (Cleatech / ShelLab catalog, pages 33–34) ---
+  {
+    id: "inc-001",
+    slug: "sco-co2-incubators",
+    name: "SCO Series — CO₂ Incubators",
+    brand: "Cleatech",
+    sku: "SCO",
+    category: "Lab Equipment",
+    categorySlug: "lab-equipment",
+    shortDescription: "CO₂ / cell culture incubators for research labs. Control CO₂ levels, humidity, and temperature in water-jacketed or air-jacketed designs. 1.8 – 58 cu.ft.",
+    description: "CO₂ incubators (cell culture incubators) are primarily used in research facilities and laboratories for cell culture growth. The Cleatech SCO Series is available in two designs: water-jacketed models rely on heated water within the incubator walls to provide uniform temperature throughout the chamber; air-jacketed models are lighter, faster to set up, reach desired temperature rapidly, require less maintenance, and are suitable for high heat sterilization.",
+    applications: [
+      "Precise CO₂, humidity & temperature control",
+      "Water-jacketed and air-jacketed designs",
+      "1.8 – 58 cu.ft capacity range",
+      "High heat sterilization compatible",
+      "115V & 230V variants",
+    ],
+    specifications: {
+      "Capacity Range": "1.8 – 58 cu.ft",
+      "Control": "CO₂, humidity, and temperature",
+      "Jacket Types": "Water-jacketed, Air-jacketed",
+      "Models Available": "9 models (115V & 230V)",
+    },
+    imageUrl: "/images/products/co2_incubator_catalog.jpg",
+    featured: false,
+    models: [
+      { type: "Water Jacket", capacity_cuft: 1.8, sku_115v: "SCO2W",  price_115v_usd: 4188,  sku_230v: "SCO2W-2",  price_230v_usd: 4608 },
+      { type: "Water Jacket", capacity_cuft: 5,   sku_115v: "SCO5W",  price_115v_usd: 5890,  sku_230v: "SCO5W-2",  price_230v_usd: 6540 },
+      { type: "Water Jacket", capacity_cuft: 6,   sku_115v: "SCO6WE", price_115v_usd: 5056,  sku_230v: "SCO6WE-2", price_230v_usd: 5562 },
+      { type: "Air Jacket",   capacity_cuft: 5,   sku_115v: "SCO5A",  price_115v_usd: 5000,  sku_230v: "SCO5A-2",  price_230v_usd: 5695 },
+      { type: "Air Jacket",   capacity_cuft: 6,   sku_115v: "SCO6AD", price_115v_usd: 5790,  sku_230v: "SCO6AD-2", price_230v_usd: 6525 },
+      { type: "Air Jacket",   capacity_cuft: 10,  sku_115v: "SCO10A", price_115v_usd: 9975,  sku_230v: "SCO10A-2", price_230v_usd: 10500 },
+      { type: "Air Jacket",   capacity_cuft: 31,  sku_115v: "SCO31",  price_115v_usd: 10890, sku_230v: "SCO31-2",  price_230v_usd: 12452 },
+      { type: "Air Jacket",   capacity_cuft: 40,  sku_115v: "SCO40",  price_115v_usd: 13375, sku_230v: "SCO40-2",  price_230v_usd: 14972 },
+      { type: "Air Jacket",   capacity_cuft: 58,  sku_115v: "SCO58",  price_115v_usd: 15975, sku_230v: "SCO58-2",  price_230v_usd: 17976 },
+    ],
+  },
+  {
+    id: "inc-002",
+    slug: "smi-microbiological-incubators",
+    name: "SMI Series — Microbiological Incubators",
+    brand: "Cleatech",
+    sku: "SMI",
+    category: "Lab Equipment",
+    categorySlug: "lab-equipment",
+    shortDescription: "Microbiology lab incubators for general cell culture and constant-temperature applications. Benchtop, dual-stacked, side-by-side, and large-capacity formats.",
+    description: "Microbiology incubators come in a wide range of sizes and shapes. The Cleatech SMI Series is redesigned for optimum performance and is guaranteed to fit any workspace need — perfect for general cell culture and constant temperature applications.",
+    applications: [
+      "Microprocessor control",
+      "Temperature uniformity ±0.35 °C",
+      "Stainless steel interior",
+      "Over-temperature alarm",
+      "Unique warm air jacket design",
+      "115V & 230V variants",
+    ],
+    specifications: {
+      "Capacity Range": "2 – 38.6 cu.ft",
+      "Temp Uniformity": "±0.35 °C",
+      "Interior": "Stainless steel",
+      "Models Available": "7 models (115V & 230V)",
+    },
+    imageUrl: "/images/products/microbiological_incubator_catalog.jpg",
+    featured: false,
+    models: [
+      { type: "Benchtop Single", capacity_cuft: 2,     sku_115v: "SMI2",  price_115v_usd: 1805, sku_230v: "SMI2-2",  price_230v_usd: 1998 },
+      { type: "Benchtop Single", capacity_cuft: 6,     sku_115v: "SMI6",  price_115v_usd: 2575, sku_230v: "SMI6-2",  price_230v_usd: 2832 },
+      { type: "Benchtop Single", capacity_cuft: 7,     sku_115v: "SMI7",  price_115v_usd: 2882, sku_230v: "SMI7-2",  price_230v_usd: 3225 },
+      { type: "Dual-Stacked",    capacity_cuft: "2×6", sku_115v: "SMI12", price_115v_usd: 5134, sku_230v: "SMI12-2", price_230v_usd: 5740 },
+      { type: "Side By Side",    capacity_cuft: 11,    sku_115v: "SMI11", price_115v_usd: 4654, sku_230v: "SMI11-2", price_230v_usd: 5206 },
+      { type: "Large Capacity",  capacity_cuft: 30.8,  sku_115v: "SMI31", price_115v_usd: 6305, sku_230v: "SMI31-2", price_230v_usd: 6936 },
+      { type: "Large Capacity",  capacity_cuft: 38.6,  sku_115v: "SMI39", price_115v_usd: 8150, sku_230v: "SMI39-2", price_230v_usd: 8855 },
+    ],
+  },
+  {
+    id: "inc-003",
+    slug: "sri-refrigerated-incubators",
+    name: "SRI Series — Refrigerated Incubators",
+    brand: "ShelLab",
+    sku: "SRI",
+    category: "Lab Equipment",
+    categorySlug: "lab-equipment",
+    shortDescription: "Laboratory B.O.D. refrigerated incubators. Standard, Peltier, Drosophila, and Diurnal models for low-temperature workflows. 0 °C to +45 °C.",
+    description: "Laboratory B.O.D. refrigerated incubators by ShelLab — low-temperature incubators and cooling incubators in many sizes and features. Standard refrigerated incubators are ideal for small-volume workloads and meet APHA specifications for Biochemical Oxygen Demand (B.O.D.) analysis. Drosophila units utilize day/night controls along with LED lighting to provide an excellent environment for drosophila culture. Diurnal growth chambers are designed for studies requiring day and nighttime simulation. Peltier incubators use thermoelectric cooling — eliminating the need for a refrigeration compressor.",
+    applications: [
+      "Standard, Peltier, Drosophila & Diurnal models",
+      "APHA-compliant B.O.D. analysis",
+      "Compressor-free Peltier thermoelectric cooling",
+      "Day/night LED lighting (Drosophila & Diurnal)",
+      "115V & 230V variants",
+    ],
+    specifications: {
+      "Temperature Range": "0 °C to +45 °C",
+      "Capacity Range": "2.4 – 20.3 cu.ft",
+      "Models": "Standard, Peltier, Drosophila, Diurnal",
+      "Models Available": "7 models (115V & 230V)",
+    },
+    imageUrl: "/images/products/refrigerated_incubator_catalog.jpg",
+    featured: false,
+    models: [
+      { type: "Standard (0 °C to +45 °C)",     capacity_cuft: 2.4,  sku_115v: "SRI3",    price_115v_usd: 2325, sku_230v: "SRI3-2",    price_230v_usd: 2556 },
+      { type: "Peltier (+15 °C to +40 °C)",    capacity_cuft: 3,    sku_115v: "SRI3P",   price_115v_usd: 2690, sku_230v: "SRI3P-2",   price_230v_usd: 2900 },
+      { type: "Peltier (+15 °C to +40 °C)",    capacity_cuft: 6.5,  sku_115v: "SRI6P",   price_115v_usd: 3544, sku_230v: "SRI6P-2",   price_230v_usd: 3964 },
+      { type: "Peltier (+15 °C to +40 °C)",    capacity_cuft: 19.3, sku_115v: "SRI20P",  price_115v_usd: 4875, sku_230v: "SRI20P-2",  price_230v_usd: 5453 },
+      { type: "Drosophila (+15 °C to +40 °C)", capacity_cuft: 6.5,  sku_115v: "SRI6PF",  price_115v_usd: 4252, sku_230v: "SRI6PF-2",  price_230v_usd: 4698 },
+      { type: "Drosophila (+15 °C to +40 °C)", capacity_cuft: 19.3, sku_115v: "SRI20PF", price_115v_usd: 6880, sku_230v: "SRI20PF-2", price_230v_usd: 7601 },
+      { type: "Diurnal (0 °C to +45 °C)",      capacity_cuft: 20.3, sku_115v: "SRI21D",  price_115v_usd: 6440, sku_230v: "SRI21D-2",  price_230v_usd: 7096 },
+    ],
+  },
+  {
+    id: "inc-004",
+    slug: "ssi-shaking-incubators",
+    name: "SSI Series — Shaking Incubators",
+    brand: "Cleatech",
+    sku: "SSI",
+    category: "Lab Equipment",
+    categorySlug: "lab-equipment",
+    shortDescription: "Precision-control shaking incubators in benchtop and floor models for evenly distributing nutrients throughout culture media.",
+    description: "Precise-control, high-performance shaking incubators — floor and benchtop models at the lowest price. Used where evenly distributed nutrients throughout culture media are required. The Mini Shaker is the most compact shaking incubator in its class, featuring a non-slip rubber-coated surface ideal for tissue culture flasks, petri dishes, and staining trays. A constant monitoring system verifies and maintains accuracy through the duration of the program, with sophisticated over-temperature and over-speed controls ensuring long life, safety, and sample integrity. The unique counter-balance weighting system is adjustable to accommodate off-center loads, varying capacities, and stroke lengths for smoother operation.",
+    applications: [
+      "Benchtop & floor models",
+      "Non-slip rubber-coated surface",
+      "Over-temperature & over-speed safety controls",
+      "Adjustable counter-balance weighting",
+      "User-adjustable rotational stroke",
+      "115V & 230V variants",
+    ],
+    specifications: {
+      "Formats": "Benchtop & Floor",
+      "Capacity Range": "2 – 5 cu.ft",
+      "Safety": "Over-temperature & over-speed monitoring",
+      "Models Available": "3 models (115V & 230V)",
+    },
+    imageUrl: "/images/products/shaking_incubator_catalog.jpg",
+    featured: false,
+    models: [
+      { type: "Benchtop",    capacity_cuft: 2,   sku_115v: "SSI2", price_115v_usd: 2250, sku_230v: "SSI2-2", price_230v_usd: 2250 },
+      { type: "Benchtop",    capacity_cuft: 3.3, sku_115v: "SSI3", price_115v_usd: 5648, sku_230v: "SSI3-2", price_230v_usd: 6214 },
+      { type: "Floor Model", capacity_cuft: 5,   sku_115v: "SSI5", price_115v_usd: 7024, sku_230v: "SSI5-2", price_230v_usd: 7727 },
+    ],
   },
 ];
 

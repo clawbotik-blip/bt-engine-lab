@@ -163,6 +163,48 @@ export default async function ProductDetailPage({ params }: Props) {
                   </div>
                 </section>
 
+                {product.models && product.models.length > 0 && (
+                  <section aria-labelledby="models-heading">
+                    <h2 id="models-heading" className="text-xl font-bold text-brand-navy mb-4">Models &amp; Pricing</h2>
+                    <div className="rounded-xl border border-slate-100 overflow-x-auto">
+                      <table className="w-full text-sm min-w-[640px]" aria-label={`${product.name} models and pricing`}>
+                        <thead>
+                          <tr className="bg-brand-navy text-white text-left">
+                            <th className="px-4 py-3 font-medium">Type</th>
+                            <th className="px-4 py-3 font-medium">Cu.Ft</th>
+                            <th className="px-4 py-3 font-medium">115V SKU</th>
+                            <th className="px-4 py-3 font-medium text-right">115V Price</th>
+                            <th className="px-4 py-3 font-medium">230V SKU</th>
+                            <th className="px-4 py-3 font-medium text-right">230V Price</th>
+                            <th className="px-4 py-3 font-medium text-center">Quote</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {product.models.map((m, i) => (
+                            <tr key={m.sku_115v} className={i % 2 === 0 ? "bg-brand-light" : "bg-white"}>
+                              <td className="px-4 py-3 text-slate-700 font-medium">{m.type}</td>
+                              <td className="px-4 py-3 text-slate-600">{m.capacity_cuft}</td>
+                              <td className="px-4 py-3 font-mono text-xs text-slate-500">{m.sku_115v}</td>
+                              <td className="px-4 py-3 text-slate-700 text-right">${m.price_115v_usd.toLocaleString()}</td>
+                              <td className="px-4 py-3 font-mono text-xs text-slate-500">{m.sku_230v}</td>
+                              <td className="px-4 py-3 text-slate-700 text-right">${m.price_230v_usd.toLocaleString()}</td>
+                              <td className="px-4 py-3 text-center">
+                                <Link
+                                  href={`/request-quote?product=${encodeURIComponent(product.name + " — " + m.sku_115v)}&sku=${m.sku_115v}`}
+                                  className="inline-flex items-center rounded-md bg-cyan-500 px-3 py-1 text-xs font-semibold text-brand-navy hover:bg-cyan-400 transition-colors"
+                                >
+                                  Quote
+                                </Link>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                    <p className="text-xs text-slate-400 mt-2">List prices in USD. Contact us for volume discounts.</p>
+                  </section>
+                )}
+
                 <section aria-labelledby="docs-heading">
                   <h2 id="docs-heading" className="text-xl font-bold text-brand-navy mb-4">Documents</h2>
                   <div className="flex flex-wrap gap-3">
