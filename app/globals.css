@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-inter: "Inter", system-ui, sans-serif;
+    scroll-behavior: smooth;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    @apply bg-white text-brand-dark antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight;
+  }
+
+  /* Accessible focus ring */
+  :focus-visible {
+    @apply outline-none ring-2 ring-cyan-500 ring-offset-2;
+  }
+
+  /* Smooth anchor scroll offset for sticky nav */
+  [id] {
+    scroll-margin-top: 80px;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-md bg-cyan-500 px-5 py-2.5 text-sm font-semibold text-brand-navy shadow-sm transition-all duration-200
+      hover:bg-cyan-400 hover:-translate-y-px hover:shadow-md
+      focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2
+      active:translate-y-0;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-md border border-white/30 bg-white/10 px-5 py-2.5 text-sm font-semibold text-white backdrop-blur-sm transition-all duration-200
+      hover:bg-white/20 hover:-translate-y-px
+      focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center rounded-md border border-navy-900/20 px-5 py-2.5 text-sm font-semibold text-brand-navy transition-all duration-200
+      hover:border-cyan-500 hover:text-cyan-600 hover:-translate-y-px
+      focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2;
+  }
+
+  .section-padding {
+    @apply py-20 px-6 md:px-10 lg:px-16;
+  }
+
+  .container-wide {
+    @apply mx-auto max-w-7xl px-6 md:px-10;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:-translate-y-0.5 hover:shadow-card-hover;
+  }
+
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-widest text-cyan-500;
+  }
+
+  .form-input {
+    @apply block w-full rounded-md border border-slate-200 bg-white px-4 py-3 text-sm text-brand-dark placeholder-slate-400
+      transition-colors duration-150
+      focus:border-cyan-500 focus:outline-none focus:ring-1 focus:ring-cyan-500;
+  }
+
+  .form-label {
+    @apply block text-sm font-medium text-slate-700 mb-1.5;
+  }
+}
